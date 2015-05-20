@@ -16,14 +16,14 @@ format_human_readable
 # - Text settings - #
 #####################
 use_xft yes
-xftfont Ubuntu:size=8
+xftfont Ubuntu:size=16
 override_utf8_locale yes
 text_buffer_size 2048
 
 #############################
 # - Window specifications - #
 #############################
-own_window_class Conky
+own_window_class ConkyMain
 own_window yes
 own_window_type normal
 own_window_transparent yes
@@ -34,10 +34,10 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 alignment top_right
 gap_x 0
 gap_y 40
-minimum_size 182 0
-maximum_width 182
+minimum_size 364 0
+maximum_width 364
 
-default_bar_size 60 8
+default_bar_size 120 16
 
 #########################
 # - Graphics settings - #
@@ -51,39 +51,39 @@ color1 CE5C00
 color2 white
 color3 CE5C00
 lua_load /usr/share/conkycolors/scripts/conkyCairo.lua
-lua_draw_hook_post conky_main white CE5C00  4 off off off off off 0
+lua_draw_hook_post conky_main white CE5C00 4 off off off off on
 
 TEXT
-${voffset 10}
+${voffset 20}
 ##############
 # - SYSTEM - #
 ##############
 # |--CPU
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 1}${color} GHZ${font}
-${goto 100}CPU1: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu1}%${color}${font}
-${goto 100}Temp: ${font Ubuntu:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}
-${voffset 15}
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 2}${color} GHZ${font}
-${goto 100}CPU2: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu2}%${color}${font}
-${goto 100}-
-${voffset 15}
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 3}${color} GHZ${font}
-${goto 100}CPU3: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu3}%${color}${font}
-${goto 100}-
-${voffset 15}
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 4}${color} GHZ${font}
-${goto 100}CPU4: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu4}%${color}${font}
-${goto 100}-
+${goto 200}${font Ubuntu:style=Bold:size=16}${color2}${freq_g 1}${color} GHZ${font}
+${goto 200}CPU1: ${font Ubuntu:style=Bold:size=16}${color1}${cpu cpu1}%${color}${font}
+${goto 200}Temp: ${font Ubuntu:style=Bold:size=16}${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}
+${voffset 30}
+${goto 200}${font Ubuntu:style=Bold:size=16}${color2}${freq_g 2}${color} GHZ${font}
+${goto 200}CPU2: ${font Ubuntu:style=Bold:size=16}${color1}${cpu cpu2}%${color}${font}
+${goto 200}-
+${voffset 30}
+${goto 200}${font Ubuntu:style=Bold:size=16}${color2}${freq_g 3}${color} GHZ${font}
+${goto 200}CPU3: ${font Ubuntu:style=Bold:size=16}${color1}${cpu cpu3}%${color}${font}
+${goto 200}-
+${voffset 30}
+${goto 200}${font Ubuntu:style=Bold:size=16}${color2}${freq_g 4}${color} GHZ${font}
+${goto 200}CPU4: ${font Ubuntu:style=Bold:size=16}${color1}${cpu cpu4}%${color}${font}
+${goto 200}-
 # |--MEM
-${voffset 15}
-${goto 100}RAM: ${font Ubuntu:style=Bold:size=8}${color1}$memperc%${color}${font}
-${goto 100}F: ${font Ubuntu:style=Bold:size=8}${color2}${memeasyfree}${color}${font}
-${goto 100}U: ${font Ubuntu:style=Bold:size=8}${color2}${mem}${color}${font}
+${voffset 30}
+${goto 200}RAM: ${font Ubuntu:style=Bold:size=16}${color1}$memperc%${color}${font}
+${goto 200}F: ${font Ubuntu:style=Bold:size=16}${color2}${memeasyfree}${color}${font}
+${goto 200}U: ${font Ubuntu:style=Bold:size=16}${color2}${mem}${color}${font}
 ##########
 # - HD - #
 ##########
-${voffset 15}
-${goto 100}Root: ${font Ubuntu:style=Bold:size=8}${color1}${fs_free_perc /}%${color}${font}
-${goto 100}F: ${font Ubuntu:style=Bold:size=8}${color2}${fs_free /}${color}${font}
-${goto 100}U: ${font Ubuntu:style=Bold:size=8}${color2}${fs_used /}${color}${font}
+${voffset 30}
+${goto 200}Root: ${font Ubuntu:style=Bold:size=16}${color1}${fs_free_perc /}%${color}${font}
+${goto 200}F: ${font Ubuntu:style=Bold:size=16}${color2}${fs_free /}${color}${font}
+${goto 200}U: ${font Ubuntu:style=Bold:size=16}${color2}${fs_used /}${color}${font}
 

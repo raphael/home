@@ -51,7 +51,7 @@ color1 CE5C00
 color2 white
 color3 CE5C00
 lua_load /usr/share/conkycolors/scripts/conkyCairo.lua
-lua_draw_hook_post conky_main white CE5C00  4 off off off off off 0
+lua_draw_hook_post conky_main white CE5C00  4 off off off off off 0 off
 
 TEXT
 ${voffset 10}

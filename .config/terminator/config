@@ -1,10 +1,11 @@
 [global_config]
-  handle_size = 0
-  title_hide_sizetext = True
+  handle_size = 1
+  enabled_plugins = ,
   focus = system
   suppress_multiple_term_dialog = True
   geometry_hinting = False
   title_transmit_bg_color = "#6f8ca9"
+  tab_position = hidden
   inactive_color_offset = 0.69
 [keybindings]
   next_tab = <Primary><Alt>bracketright
@@ -27,6 +28,7 @@
   switch_to_tab_9 = <Alt>9
 [profiles]
   [[default]]
+    scrollbar_position = hidden
     palette = "#3b3b3b:#cf6a4c:#99ad6a:#d8ad4c:#597bc5:#a037b0:#71b9f8:#adadad:#636363:#f79274:#c1d592:#ffd574:#81a3ed:#c85fd8:#99e1ff:#d5d5d5"
     background_image = None
     background_darkness = 0.78
@@ -35,7 +37,30 @@
     cursor_color = "#dcdcdc"
     foreground_color = "#adadad"
     scroll_on_output = False
+    show_titlebar = False
     font = PragmataPro 11
+    background_color = "#151515"
+    scrollback_infinite = True
+  [[pale]]
+    scrollbar_position = hidden
+    palette = "#000000:#b87a7a:#7ab87a:#b8b87a:#7a7ab8:#b87ab8:#7ab8b8:#d9d9d9:#262626:#dbbdbd:#bddbbd:#dbdbbd:#bdbddb:#dbbddb:#bddbdb:#ffffff"
+    background_image = None
+    background_darkness = 0.88
+    background_type = transparent
+    use_system_font = False
+    cursor_color = "#dcdcdc"
+    foreground_color = "#d9e6f2"
+    scroll_on_output = False
+    font = PragmataPro 11
+    scrollback_infinite = True
+  [[hidpi]]
+    palette = "#3b3b3b:#cf6a4c:#99ad6a:#d8ad4c:#597bc5:#a037b0:#71b9f8:#adadad:#636363:#f79274:#c1d592:#ffd574:#81a3ed:#c85fd8:#99e1ff:#d5d5d5"
+    background_image = None
+    use_system_font = False
+    cursor_color = "#dcdcdc"
+    foreground_color = "#adadad"
+    scroll_on_output = False
+    font = PragmataPro 20
     background_color = "#151515"
     scrollback_infinite = True
   [[solarized]]
@@ -50,28 +75,6 @@
     scroll_on_output = False
     font = PragmataPro 11
     background_color = "#002b36"
-    scrollback_infinite = True
-  [[hidpi]]
-    palette = "#3b3b3b:#cf6a4c:#99ad6a:#d8ad4c:#597bc5:#a037b0:#71b9f8:#adadad:#636363:#f79274:#c1d592:#ffd574:#81a3ed:#c85fd8:#99e1ff:#d5d5d5"
-    background_image = None
-    use_system_font = False
-    cursor_color = "#dcdcdc"
-    foreground_color = "#adadad"
-    scroll_on_output = False
-    font = PragmataPro 20
-    background_color = "#151515"
-    scrollback_infinite = True
-  [[pale]]
-    scrollbar_position = hidden
-    palette = "#000000:#b87a7a:#7ab87a:#b8b87a:#7a7ab8:#b87ab8:#7ab8b8:#d9d9d9:#262626:#dbbdbd:#bddbbd:#dbdbbd:#bdbddb:#dbbddb:#bddbdb:#ffffff"
-    background_image = None
-    background_darkness = 0.88
-    background_type = transparent
-    use_system_font = False
-    cursor_color = "#dcdcdc"
-    foreground_color = "#d9e6f2"
-    scroll_on_output = False
-    font = PragmataPro 11
     scrollback_infinite = True
 [layouts]
   [[default]]
