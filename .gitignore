@@ -4,3 +4,8 @@
 .config/epiphany
 .fonts/Pr*
 .fonts/My*
+.config/pulse
+.config/gedit/
+.config/monitors.xml
+.config/evolution/
+.config/goa-1.0/
