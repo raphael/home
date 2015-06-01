@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<gconf>
+	<entry name="needs_terminal" mtime="1432921936" type="bool" value="true"/>
+	<entry name="enabled" mtime="1432921936" type="bool" value="true"/>
+	<entry name="command" mtime="1432921936" type="string">
+		<stringvalue>/usr/bin/terminator %s</stringvalue>
+	</entry>
+</gconf>

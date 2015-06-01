@@ -2,7 +2,7 @@
 export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
-export PATH=$PATH:$HOME/.bin
+export PATH=$PATH:$HOME/.bin:$HOME/scripts
 
 # Go setup
 export GOPATH=$HOME/go

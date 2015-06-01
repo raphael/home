@@ -9,3 +9,5 @@
 .config/monitors.xml
 .config/evolution/
 .config/goa-1.0/
+.config/chromium
+.config/google-chrome

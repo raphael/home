@@ -1,89 +1,78 @@
-######################
-# - Conky settings - #
-######################
-update_interval 1
-total_run_times 0
-net_avg_samples 1
-cpu_avg_samples 1
+# Conky, a system monitor, based on torsmo
+#
+# Any original torsmo code is licensed under the BSD license
+#
+# All code written since the fork of torsmo is licensed under the GPL
+#
+# Please see COPYING for details
+#
+# Copyright (c) 2004, Hannu Saransaari and Lauri Hakkarainen
+# Copyright (c) 2005-2010 Brenden Matthews, Philip Kovacs, et. al. (see AUTHORS)
+# All rights reserved.
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
 
-imlib_cache_size 0
-double_buffer yes
-no_buffers yes
-
-format_human_readable
-
-#####################
-# - Text settings - #
-#####################
+background no
 use_xft yes
-xftfont Ubuntu:size=8
-override_utf8_locale yes
-text_buffer_size 2048
-
-#############################
-# - Window specifications - #
-#############################
-own_window_class Conky
+xftfont Dosis:light:size=10
+update_interval 0.5
 own_window yes
-own_window_type normal
-own_window_transparent yes
+#own_window_type desktop
+own_window_title no
+own_window_transparent no
+own_window_colour 000000
+own_window_hints undecorated,below,skip_taskbar,skip_pager, sticky
 own_window_argb_visual yes
-own_window_argb_value 200
-own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
-
-alignment top_right
-gap_x 2565
-gap_y 40
-minimum_size 182 0
-maximum_width 182
-
-default_bar_size 60 8
-
-#########################
-# - Graphics settings - #
-#########################
+own_window_argb_value 170
+own_window_argb_visual yes
+double_buffer yes
+minimum_size 1830 1
+maximum_width 1850
+maximum_height 800
 draw_shades no
+draw_outline no
+draw_borders no_buffers
+draw_graph_borders no
+default_color ffffff
+default_shade_color 000000
+default_outline_color ffffff
+alignment bottom_left
+no_buffers yes
+uppercase no
+use_spacer left
+border_inner_margin 5
+border_outter_margin 0
+override_utf8_locale yes
+pad_percents 2
+temperature_unit celsius
 
-default_color cccccc
+gap_x 36
+gap_y 500
 
-color0 white
-color1 CE5C00 
-color2 white
-color3 CE5C00
-lua_load /usr/share/conkycolors/scripts/conkyCairo.lua
-lua_draw_hook_post conky_main white CE5C00  4 off off off off off 0 off
+color1 ffffff
 
+#${font Dosis:light:size=40}${alignr}${time %H:%M}$font 
+#${goto 1650} ${color1}${font Dosis:light:size=24}${time %a, %d/%m/%Y}$color$font
+#${font Dosis:bold:size=10}CPU$font >> ${goto 45}${cpu cpu1}% of ${freq 1}Mhz ${goto 155}${cpu cpu2}% of ${freq 2}Mhz \
+#${goto 45}${cpugraph cpu1 15,100 222222 ffffff 100 -t}\
+#${goto 170}${cpugraph cpu2 15,100 222222 ffffff 100 -t}\
+#${goto 295}${cpugraph cpu3 15,100 222222 ffffff 100 -t}\
+#${goto 420}${cpugraph cpu4 15,100 222222 ffffff 100 -t}\
 TEXT
-${voffset 10}
-##############
-# - SYSTEM - #
-##############
-# |--CPU
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 1}${color} GHZ${font}
-${goto 100}CPU1: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu1}%${color}${font}
-${goto 100}Temp: ${font Ubuntu:style=Bold:size=8}${color1}${execi 30 sensors | grep 'Core 0' | awk '{print $3}' | sed 's/+//' | sed 's/.0.*//'}${color}${font}
-${voffset 15}
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 2}${color} GHZ${font}
-${goto 100}CPU2: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu2}%${color}${font}
-${goto 100}-
-${voffset 15}
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 3}${color} GHZ${font}
-${goto 100}CPU3: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu3}%${color}${font}
-${goto 100}-
-${voffset 15}
-${goto 100}${font Ubuntu:style=Bold:size=8}${color2}${freq_g 4}${color} GHZ${font}
-${goto 100}CPU4: ${font Ubuntu:style=Bold:size=8}${color1}${cpu cpu4}%${color}${font}
-${goto 100}-
-# |--MEM
-${voffset 15}
-${goto 100}RAM: ${font Ubuntu:style=Bold:size=8}${color1}$memperc%${color}${font}
-${goto 100}F: ${font Ubuntu:style=Bold:size=8}${color2}${memeasyfree}${color}${font}
-${goto 100}U: ${font Ubuntu:style=Bold:size=8}${color2}${mem}${color}${font}
-##########
-# - HD - #
-##########
-${voffset 15}
-${goto 100}Root: ${font Ubuntu:style=Bold:size=8}${color1}${fs_free_perc /}%${color}${font}
-${goto 100}F: ${font Ubuntu:style=Bold:size=8}${color2}${fs_free /}${color}${font}
-${goto 100}U: ${font Ubuntu:style=Bold:size=8}${color2}${fs_used /}${color}${font}
-
+${font Dosis:bold:size=10}CPU$font >>  \
+${goto 45}${cpugraph cpu0 15,500 222222 ffffff 100 -t}\
+${goto 675} ${font Dosis:bold:size=10}RAM$font >> $mem  ($memperc%) \
+${goto 900} ${font Dosis:bold:size=10}DOWNLOAD$font >> ${downspeed wlp1s0}/s ${goto 1050} (${totaldown wlp1s0}) \
+${goto 1140} ${font Dosis:bold:size=10}UPLOAD$font >> ${upspeed wlp1s0}/s ${goto 1270} (${totalup wlp1s0}) \
+${goto 1470} ${font Dosis:bold:size=10}TEMP$font >> ${font Dosis:size=10}[CPU]$font ${acpitemp}° \

@@ -1,0 +1,14 @@
+[roxterm profile]
+colour_scheme=Tango
+font=PragmataPro 11
+hide_menubar=1
+show_resize_grip=0
+show_add_tab_btn=0
+always_show_tabs=0
+color_term=
+term=xterm-256color
+background_type=2
+saturation=0.089172
+scrollbar_pos=0
+scroll_on_keystroke=1
+scrollback_lines=99999

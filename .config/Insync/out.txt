@@ -1,0 +1,4 @@
+which: no kreadconfig in (/usr/lib/insync:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.bin:/home/raphael/src/go/bin:/home/raphael/go/bin)
+QClipboard: Unable to receive an event from the clipboard manager in a reasonable time
+which: no kreadconfig in (/usr/lib/insync:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/raphael/.bin:/home/raphael/src/go/bin:/home/raphael/go/bin)
+QClipboard: Unable to receive an event from the clipboard manager in a reasonable time

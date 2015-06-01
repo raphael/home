@@ -48,10 +48,9 @@ default_outline_color ffffff
 alignment bottom_left
 no_buffers yes
 uppercase no
-override_utf10_locale no
+override_utf8_locale yes
 use_spacer left
 border_inner_margin 0
-override_utf10_locale yes
 pad_percents 2
 temperature_unit celsius
 
@@ -67,6 +66,6 @@ ${color1}${font Dosis:light:size=24}${alignr}${time %a, %d/%m/%Y}$color$font
 ${font Dosis:bold:size=10}CPU$font >> ${goto 90}${cpu cpu1}% of ${freq 1}Mhz ${goto 310}${cpu cpu2}% of ${freq 2}Mhz \
 ${goto 530}${cpu cpu1}% of ${freq 1}Mhz ${goto 750}${cpu cpu2}% of ${freq 2}Mhz \
 ${goto 1000} ${font Dosis:bold:size=10}RAM$font >> $mem \
-${goto 1240} ${font Dosis:bold:size=10}DOWNLOAD$font >> ${downspeed ws}/s ${goto 1600} (${totaldown wlp1s0}) \
+${goto 1240} ${font Dosis:bold:size=10}DOWNLOAD$font >> ${downspeed wlp1s0}/s ${goto 1600} (${totaldown wlp1s0}) \
 ${goto 1720} ${font Dosis:bold:size=10}UPLOAD$font >> ${upspeed wlp1s0}/s ${goto 2040} (${totalup wlp1s0}) \
-${goto 2160} ${font Dosis:bold:size=10}TEMP$font >> ${font Dosis:size=10}[CPU]$font ${acpitemp}° ${goto 2300} \
+${goto 2160} ${font Dosis:bold:size=10}TEMP$font >> ${font Dosis:size=10}[CPU]$font ${acpitemp}°
