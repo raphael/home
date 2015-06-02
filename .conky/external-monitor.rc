@@ -25,7 +25,8 @@
 
 background no
 use_xft yes
-xftfont Dosis:light:size=10
+#xftfont PragmataPro:light:size=11
+xftfont PragmataPro:size=11
 update_interval 0.5
 own_window yes
 #own_window_type desktop
@@ -37,8 +38,8 @@ own_window_argb_visual yes
 own_window_argb_value 170
 own_window_argb_visual yes
 double_buffer yes
-minimum_size 1830 1
-maximum_width 1850
+minimum_size 1915 1
+maximum_width 1920
 maximum_height 800
 draw_shades no
 draw_outline no
@@ -50,29 +51,33 @@ default_outline_color ffffff
 alignment bottom_left
 no_buffers yes
 uppercase no
-use_spacer left
+use_spacer right
 border_inner_margin 5
 border_outter_margin 0
 override_utf8_locale yes
 pad_percents 2
 temperature_unit celsius
 
-gap_x 36
-gap_y 500
+gap_x 5
+gap_y 410
 
 color1 ffffff
 
-#${font Dosis:light:size=40}${alignr}${time %H:%M}$font 
-#${goto 1650} ${color1}${font Dosis:light:size=24}${time %a, %d/%m/%Y}$color$font
-#${font Dosis:bold:size=10}CPU$font >> ${goto 45}${cpu cpu1}% of ${freq 1}Mhz ${goto 155}${cpu cpu2}% of ${freq 2}Mhz \
+#${font PragmataPro:light:size=40}${alignr}${time %H:%M}$font 
+#${goto 1650} ${color1}${font PragmataPro:light:size=24}${time %a, %d/%m/%Y}$color$font
+#${font PragmataPro:bold:size=11}CPU$font >> ${goto 45}${cpu cpu1}% of ${freq 1}Mhz ${goto 155}${cpu cpu2}% of ${freq 2}Mhz \
 #${goto 45}${cpugraph cpu1 15,100 222222 ffffff 100 -t}\
 #${goto 170}${cpugraph cpu2 15,100 222222 ffffff 100 -t}\
 #${goto 295}${cpugraph cpu3 15,100 222222 ffffff 100 -t}\
 #${goto 420}${cpugraph cpu4 15,100 222222 ffffff 100 -t}\
 TEXT
-${font Dosis:bold:size=10}CPU$font >>  \
-${goto 45}${cpugraph cpu0 15,500 222222 ffffff 100 -t}\
-${goto 675} ${font Dosis:bold:size=10}RAM$font >> $mem  ($memperc%) \
-${goto 900} ${font Dosis:bold:size=10}DOWNLOAD$font >> ${downspeed wlp1s0}/s ${goto 1050} (${totaldown wlp1s0}) \
-${goto 1140} ${font Dosis:bold:size=10}UPLOAD$font >> ${upspeed wlp1s0}/s ${goto 1270} (${totalup wlp1s0}) \
-${goto 1470} ${font Dosis:bold:size=10}TEMP$font >> ${font Dosis:size=10}[CPU]$font ${acpitemp}° \
+${font PragmataPro:bold:size=11}CPU$font >>${voffset -42} ${cpugraph cpu0 50,190 222222 ffffff}${voffset 42}\
+     ${font PragmataPro:bold:size=11}RAM$font >> $mem  ($memperc%)\
+     ${font PragmataPro:bold:size=11}DOWNLOAD$font >> ${downspeed wlp1s0}\
+     (${totaldown wlp1s0})\
+     ${font PragmataPro:bold:size=11}UPLOAD$font >> ${upspeed wlp1s0}\
+     (${totalup wlp1s0})\
+     ${font PragmataPro:bold:size=11}TEMP$font >> ${font PragmataPro:size=11}[CPU] ${acpitemp}°$font\
+     ${font PragmataPro:bold:size=11}IP$font >> ${font PragmataPro:size=11}${addr wlp1s0}$font\
+     ${font PragmataPro:bold:size=11}TOP$font >> ${font PragmataPro:size=11}${top name 1}${top cpu 1}$font\
+            ${font PragmataPro:size=11}${kernel}$font

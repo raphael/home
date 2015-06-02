@@ -8,6 +8,9 @@ export PATH=$PATH:$HOME/.bin:$HOME/scripts
 export GOPATH=$HOME/go
 export PATH=$PATH:$HOME/src/go/bin:$GOPATH/bin
 
+# Ruby setup
+export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
+
 # Prompt
 function _update_ps1() {
   export PS1="$(powerline-shell-go)"
