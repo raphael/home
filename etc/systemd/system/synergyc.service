@@ -1,0 +1,11 @@
+[Unit]
+Description=Synergy client service
+After=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/synergyc -f -d FATAL -n chromia --yscroll 28 10.10.2.18
+Restart=on-failure
+User=raphael
+
+[Install]
+WantedBy=graphical.target

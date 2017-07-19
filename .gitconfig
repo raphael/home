@@ -1,3 +1,8 @@
 [user]
-	email = raphael@rightscale.com
-	name = Raphael Simon
+        name = Raphael Simon
+        email = simon.raphael@gmail.com
+[url "git@github.com:"]
+    insteadOf = gh:
+[github]
+        user = raphael
+

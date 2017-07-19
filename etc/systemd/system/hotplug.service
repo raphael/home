@@ -1,0 +1,11 @@
+[Unit]
+Description=Monitor hotplug
+
+[Service]
+Type=simple
+RemainAfterExit=no
+User=raphael
+ExecStart=/usr/libexec/udev_monitor
+
+[Install]
+WantedBy=multi-user.target

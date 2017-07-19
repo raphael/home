@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<gconf>
-	<entry name="needs_terminal" mtime="1432921936" type="bool" value="true"/>
-	<entry name="enabled" mtime="1432921936" type="bool" value="true"/>
-	<entry name="command" mtime="1433220439" type="string">
-		<stringvalue>/usr/bin/roxterm -e ssh %s</stringvalue>
-	</entry>
-</gconf>

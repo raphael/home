@@ -2,29 +2,46 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
+echo Setting up configs
+
+# SSH (first to fail fast if /mnt is not mounted)
+mkdir -p $HOME/.ssh
+cp /mnt/src/id_rsa $HOME/.ssh
+cp /mnt/src/id_rsa.pub $HOME/.ssh
+
 # Misc config
-ln -s $DIR/.bashrc $HOME/.bashrc
-ln -s $DIR/.bash_aliases $HOME/.bash_aliases
 ln -s $DIR/.config $HOME/.config
 
 # Fonts
-ln -s -r $DIR/.fonts $HOME/.fonts
+mkdir -p .config/fontconfig/conf.d
+rm -f .config/fontconfig/conf.d/10-powerline-symbols.conf
+ln -s -r $DIR/.config/fontconfig/conf.d/10-powerline-symbols.conf $HOME/.config/fontconfig/conf.d
 
 # git setup
 ln -s $DIR/.gitconfig $HOME/.gitconfig
 
-# gnome-shell setup
-ln -s $DIR/.themes $HOME/.themes
-ln -s $DIR/.icons $HOME/.icons
+# Scripts
+ln -s $DIR/scripts $HOME/scripts
 
-# Screen brightness control script
-ln -s $DIR/bin $HOME/bin
+# Fish
+mkdir -p $HOME/.config/fish
+mv $HOME/.config/fish/config.fish $HOME/.config/fish/config.fish.bak > /dev/null || true
+ln -s $DIR/.config/fish/config.fish $HOME/.config/fish/config.fish
 
-# xinit
-ln -s $DIR/.xinitrc $HOME/.xinitrc
+# i3
+mkdir -p $HOME/.config/i3
+mv $HOME/.config/i3/config $HOME/.config/i3/config.bak > /dev/null || true
+ln -s $DIR/.config/i3/config $HOME/.config/i3/config
+mkdir -p $HOME/.config/i3blocks
+mv $HOME/.config/i3blocks/i3blocks.conf $HOME/.config/i3blocks/i3blocks.conf.bak > /dev/null || true
+ln -s $DIR/.config/i3blocks/i3blocks.conf $HOME/.config/i3blocks/i3blocks.conf
 
-# conky setup
-ln -s $DIR/.conky $HOME/.conky
-sudo cp ./99-monitor-hotplug.rules /etc/udev/rules.d
-sudo cp ./hotplug.sh /usr/local/bin
+# Screen hotplug setup
+sudo cp etc/systemd/system/hotplug.service /etc/systemd/system/hotplug.service
+sudo cp etc/systemd/system/synergyc.service /etc/systemd/system/synergyc.service
+sudo cp etc/udev/rules.d/95-monitor-hotplug.rules /etc/udev/rules.d
+sudo cp etc/udev/rules.d/95-monitor-hotplug2.rules /etc/udev/rules.d
 sudo udevadm control --reload-rules
+
+echo Installing packages
+while read in; do sudo pacman -Sy "$in"; done < packages.txt

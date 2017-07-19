@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=conky
-Exec=/usr/local/bin/hotplug.sh 
-Type=Application
-Categories=Utility

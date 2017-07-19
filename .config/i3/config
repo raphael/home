@@ -1,0 +1,271 @@
+# i3 config file (v4)
+# Windows key on most keyboards
+set $mod Mod1
+
+font pango:Myriad Pro Regular Condensed 22
+
+# gaps
+smart_gaps on
+gaps inner 10
+gaps outer 0
+
+# Meta key bindings
+# Move window with mod+mouse drag
+floating_modifier $mod
+
+# Let popup on top of fullscreen windows
+popup_during_fullscreen leave_fullscreen
+
+# Kill focused window with mod+shift+q
+bindsym $mod+Shift+q kill
+
+# Toggle fullscreen with mod+f
+bindsym $mod+f fullscreen
+
+# change focus with mod+hjkl
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# switch to workspace with mod+12345678
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+
+# move container to workspace with meta+shift+12345678
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+
+# move workspace to output with $mod+[]
+bindsym $mod+bracketleft move workspace to output left
+bindsym $mod+bracketright move workspace to output right
+
+# brightness
+bindsym Shift+F6 exec brightness --decrease
+bindsym Shift+F7 exec brightness --increase
+bindsym $mod+F6 exec keyboard_led --decrease
+bindsym $mod+F7 exec keyboard_led --increase
+
+# Change layouts with mod+,./
+bindsym $mod+comma layout stacking
+bindsym $mod+period layout tabbed
+bindsym $mod+slash layout toggle split
+# split in horizontal orientation
+bindsym $mod+shift+w split h
+# split in vertical orientation
+bindsym $mod+Shift+ctrl+w split v
+# Toggle floating with mod+shift+space
+bindsym $mod+Shift+space floating toggle
+# Swap focus between tiling windows and floating windows
+bindsym $mod+space focus mode_toggle
+# Move windows in and out of the scratchpad with mod+(shift)+t
+bindsym $mod+Shift+t move scratchpad
+bindsym $mod+t scratchpad show
+# Cycle through border styles with mod+b
+bindsym $mod+b border toggle
+# restart i3 inplace with mod+shift+r
+bindsym $mod+Shift+r restart
+# Focus parent container
+bindsym $mod+p focus parent
+
+## Apps
+bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Shift+Return exec gnome-terminal --window-with-profile=HiDPI
+bindsym $mod+Ctrl+s exec gnome-screenshot
+bindsym $mod+e exec emacs
+bindsym $mod+c exec google-chrome-stable
+bindsym $mod+n exec nautilus
+bindsym $mod+d exec dmenu_run -p "Run:" -l 10
+bindsym $mod+shift+d exec i3-dmenu-desktop
+
+# Volume
+bindsym Shift+F8 exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
+bindsym Shift+F9 exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym Shift+F10 exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+F8 exec "pactl set-source-mute 0 toggle; /home/raphael/scripts/volnot --mic"
+bindsym $mod+F9 exec "pactl set-source-volume 0 -2%; /home/raphael/scripts/volnot --mic"
+bindsym $mod+F10 exec "pactl set-source-volume 0 +2%; /home/raphael/scripts/volnot --mic"
+
+# volume controls (special keys on keyboard)
+bindsym XF86AudioMute exec pa-adjust mute
+bindsym XF86AudioLowerVolume exec pa-adjust minus
+bindsym XF86AudioRaiseVolume exec pa-adjust plus
+bindsym $mod+XF86AudioLowerVolume exec pa-adjust seekb
+bindsym $mod+XF86AudioRaiseVolume exec pa-adjust seekf
+bindsym $mod+Shift+XF86AudioLowerVolume exec pa-adjust seekbb
+bindsym $mod+Shift+XF86AudioRaiseVolume exec pa-adjust seekff
+
+# music controls (special keys on keyboard)
+bindsym XF86AudioNext exec stewdio skip
+bindsym XF86AudioPlay exec stewdio play
+bindsym XF86AudioPrev exec stewdio dmenu-search
+bindsym $mod+XF86AudioPlay exec stewdio qfav
+bindsym $mod+XF86AudioNext exec stewdio dmenu-queue
+
+# Set primary output for applets
+exec --no-startup-id xrandr --output eDP1 --primary
+exec --no-startup-id xrandr --output DP2 --auto --left-of eDP1
+
+# COMPTON!!!
+# exec --no-startup-id compton
+
+# Enable touchpad tap
+exec --no-startup-id xinput set-prop 9 276 1
+
+# Accel
+exec --no-startup-id xinput set-prop 13 284 0.5
+
+# Enable natural scrolling
+exec --no-startup-id xinput set-prop 9 286 1
+
+# Make sure laptop screen is primary output (for hidpi)
+#exec --no-startup-id xrandr --output eDP1 --primary
+
+# Redshift
+exec --no-startup-id redshift
+
+# Background
+exec --no-startup-id sh ~/.fehbg
+
+# Background
+exec --no-startup-id nm-applet
+
+# Init volume indicator
+exec --no-startup-id pkill -RTMIN+1 i3blocks
+
+# CPU usage
+exec --no-startup-id nc-indicators
+
+# Synergy
+exec --no-startup-id syne
+
+# Slim border
+#new_window pixel 0
+
+# Lock
+bindsym Mod4+l exec "i3lock -B 5"
+
+# Gaps
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode --pango_markup "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+# bar
+# workspace_auto_back_and_forth yes
+hide_edge_borders both
+
+for_window [class="^.*"] border pixel 0
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+# Blueman
+for_window [class="Blueman-manager"] floating enable
+exec --no-startup-id /usr/bin/blueman-applet                 # Bluetooth Manager
+
+# Colors
+set        $fg #d6d9d6
+#set        $fg #d6d1cc
+set        $bg #1d1f21
+set     $black #282a2e
+set       $red #cb555a
+set     $green #85cb55
+set    $yellow #e6cc63
+set      $blue #53a5ad
+set   $magenta #a84466
+set      $cyan #7bc3bd
+set     $white #e6e1dc
+
+#set   $primary #CB555A
+set   $primary  #CBCFCA
+set   $tertiary #ABAFAA
+set $secondary  #a84466
+set    $bar_bg  #32302fB0
+
+                      # Border      Background      Text        Indicator   Child
+client.focused          $blue       $primary        $bg         $red        $primary
+client.focused_inactive $black      $bg             $fg         $bg         $black
+client.unfocused        $black      $black          $fg         $black      $black
+client.urgent           $black      $white          $fg         $white      $red
+
+bar {
+    strip_workspace_numbers yes
+    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    i3bar_command i3bar -t
+    colors {
+        background $bar_bg
+        statusline $white
+                              # Border      Background      Text
+        focused_workspace       $bar_bg         $bar_bg     $green
+        active_workspace        $bar_bg         $bar_bg     $secondary
+        inactive_workspace      $bar_bg         $bar_bg     $tertiary
+    }
+    tray_output none
+    position top
+    output DP2
+    #mode hide
+    font pango:Myriad Pro Regular Condensed 12
+}
+
+bar {
+    strip_workspace_numbers yes
+    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    i3bar_command i3bar -t
+    colors {
+        background $bar_bg
+        statusline $white
+                              # Border      Background      Text
+        focused_workspace       $bar_bg         $bar_bg     $green
+        active_workspace        $bar_bg         $bar_bg     $secondary
+        inactive_workspace      $bar_bg         $bar_bg     $tertiary
+    }
+    tray_output primary
+    position top
+    output eDP1
+    #mode hide
+    font pango:Myriad Pro Regular Condensed 20
+}

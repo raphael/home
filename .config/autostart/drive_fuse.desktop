@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Google Drive Fuse
-Exec=/usr/bin/google-drive-ocamlfuse /mnt/gdrive 
-Type=Application
-Categories=Utility
