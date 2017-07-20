@@ -9,12 +9,9 @@ mkdir -p $HOME/.ssh
 cp /mnt/src/id_rsa $HOME/.ssh
 cp /mnt/src/id_rsa.pub $HOME/.ssh
 
-# Misc config
-ln -s $DIR/.config $HOME/.config
-
 # Fonts
-mkdir -p .config/fontconfig/conf.d
-rm -f .config/fontconfig/conf.d/10-powerline-symbols.conf
+mkdir -p $HOME/.config/fontconfig/conf.d
+rm -f $HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf
 ln -s -r $DIR/.config/fontconfig/conf.d/10-powerline-symbols.conf $HOME/.config/fontconfig/conf.d
 
 # git setup
@@ -37,11 +34,8 @@ mv $HOME/.config/i3blocks/i3blocks.conf $HOME/.config/i3blocks/i3blocks.conf.bak
 ln -s $DIR/.config/i3blocks/i3blocks.conf $HOME/.config/i3blocks/i3blocks.conf
 
 # Screen hotplug setup
-sudo cp etc/systemd/system/hotplug.service /etc/systemd/system/hotplug.service
-sudo cp etc/systemd/system/synergyc.service /etc/systemd/system/synergyc.service
-sudo cp etc/udev/rules.d/95-monitor-hotplug.rules /etc/udev/rules.d
-sudo cp etc/udev/rules.d/95-monitor-hotplug2.rules /etc/udev/rules.d
+sudo cp $DIR/etc/systemd/system/hotplug.service /etc/systemd/system/hotplug.service
+sudo cp $DIR/etc/systemd/system/synergyc.service /etc/systemd/system/synergyc.service
+sudo cp $DIR/etc/udev/rules.d/95-monitor-hotplug.rules /etc/udev/rules.d
+sudo cp $DIR/etc/udev/rules.d/95-monitor-hotplug2.rules /etc/udev/rules.d
 sudo udevadm control --reload-rules
-
-echo Installing packages
-while read in; do sudo pacman -Sy "$in"; done < packages.txt
