@@ -15,15 +15,21 @@ rm -f $HOME/.config/fontconfig/conf.d/10-powerline-symbols.conf
 ln -s -r $DIR/.config/fontconfig/conf.d/10-powerline-symbols.conf $HOME/.config/fontconfig/conf.d
 
 # git setup
+rm -f $HOME/.gitconfig
 ln -s $DIR/.gitconfig $HOME/.gitconfig
 
 # Scripts
+rm -rf $HOME/scripts
 ln -s $DIR/scripts $HOME/scripts
 
 # Fish
 mkdir -p $HOME/.config/fish
 mv $HOME/.config/fish/config.fish $HOME/.config/fish/config.fish.bak > /dev/null || true
 ln -s $DIR/.config/fish/config.fish $HOME/.config/fish/config.fish
+
+# tmux.conf
+mv $HOME/.tmux.conf $HOME/.tmux.conf.bak > /dev/null || true
+ln -s $DIR/.tmux.conf $HOME/.tmux.conf
 
 # i3
 mkdir -p $HOME/.config/i3

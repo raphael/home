@@ -34,6 +34,8 @@ function cdg
     cd (gcd $argv)
 end
 
+eval (dircolors $HOME/src/dircolors-solarized/dircolors.ansi-dark | head -n 1 | sed 's/^LS_COLORS=/set -x LS_COLORS /;s/;$//')
+
 # Example bobthefish color scheme:
 set -g theme_color_scheme user
 
