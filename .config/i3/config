@@ -88,8 +88,11 @@ bindsym $mod+Ctrl+s exec gnome-screenshot
 bindsym $mod+e exec emacs
 bindsym $mod+c exec google-chrome-stable
 bindsym $mod+n exec nautilus
-bindsym $mod+d exec dmenu -p "Run:" -l 10
-bindsym $mod+shift+d exec i3-dmenu-desktop
+
+# Window switcher / App launcher
+bindsym $mod+Tab exec rofi -show window
+bindsym $mod+shift+d exec rofi -show drun
+bindsym $mod+d exec rofi -show run
 
 # Volume
 bindsym Shift+F8 exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks

@@ -18,6 +18,10 @@ ln -s -r $DIR/.config/fontconfig/conf.d/10-powerline-symbols.conf $HOME/.config/
 rm -f $HOME/.gitconfig
 ln -s $DIR/.gitconfig $HOME/.gitconfig
 
+# .Xresources (DPI + rofi)
+rm -f $HOME/.Xresources
+ln -s $DIR/.Xresources $HOME/.Xresources
+
 # Scripts
 rm -rf $HOME/scripts
 ln -s $DIR/scripts $HOME/scripts
