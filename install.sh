@@ -31,6 +31,9 @@ ln -s $DIR/.config/fish/config.fish $HOME/.config/fish/config.fish
 mv $HOME/.tmux.conf $HOME/.tmux.conf.bak > /dev/null || true
 ln -s $DIR/.tmux.conf $HOME/.tmux.conf
 
+# Enable italics in tmux
+tic $DIR/xterm-256color-italic.terminfo
+
 # i3
 mkdir -p $HOME/.config/i3
 mv $HOME/.config/i3/config $HOME/.config/i3/config.bak > /dev/null || true

@@ -2,7 +2,7 @@
 # Windows key on most keyboards
 set $mod Mod1
 
-font pango:Myriad Pro Regular Condensed 22
+font pango:Myriad Pro Regular Condensed 11
 
 # gaps
 smart_gaps on
@@ -74,7 +74,8 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+t move scratchpad
 bindsym $mod+t scratchpad show
 # Cycle through border styles with mod+b
-bindsym $mod+b border toggle
+# bindsym $mod+b border toggle
+bindsym $mod+b  exec --no-startup-id ${HOME}/scripts/toggle_solarized_theme.sh
 # restart i3 inplace with mod+shift+r
 bindsym $mod+Shift+r restart
 # Focus parent container
@@ -87,7 +88,7 @@ bindsym $mod+Ctrl+s exec gnome-screenshot
 bindsym $mod+e exec emacs
 bindsym $mod+c exec google-chrome-stable
 bindsym $mod+n exec nautilus
-bindsym $mod+d exec dmenu_run -p "Run:" -l 10
+bindsym $mod+d exec dmenu -p "Run:" -l 10
 bindsym $mod+shift+d exec i3-dmenu-desktop
 
 # Volume
@@ -122,16 +123,19 @@ exec --no-startup-id xrandr --output DP2 --auto --left-of eDP1
 # exec --no-startup-id compton
 
 # Enable touchpad tap
-exec --no-startup-id xinput set-prop 9 276 1
+exec --no-startup-id xinput set-prop 9 273 1
 
 # Accel
-exec --no-startup-id xinput set-prop 13 284 0.5
+exec --no-startup-id xinput set-prop 9 281 0.6
 
 # Enable natural scrolling
-exec --no-startup-id xinput set-prop 9 286 1
+exec --no-startup-id xinput set-prop 9 283 1
+
+# Enable middle emulation
+exec --no-startup-id xinput set-prop 9 293 1
 
 # Make sure laptop screen is primary output (for hidpi)
-#exec --no-startup-id xrandr --output eDP1 --primary
+exec --no-startup-id xrandr --output eDP1 --primary
 
 # Redshift
 exec --no-startup-id redshift
@@ -267,5 +271,5 @@ bar {
     position top
     output eDP1
     #mode hide
-    font pango:Myriad Pro Regular Condensed 20
+    font pango:Myriad Pro Regular Condensed 10
 }
