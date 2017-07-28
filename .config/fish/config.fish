@@ -19,6 +19,9 @@ if test -n "$EMACS"
   set -x TERM eterm-color
 end
 
+# icons
+source ~/.local/share/icons-in-terminal/icons.fish
+
 # bobthefish setup
 set -g theme_color_scheme gruvbox
 

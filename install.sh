@@ -18,6 +18,10 @@ ln -s -r $DIR/.config/fontconfig/conf.d/10-powerline-symbols.conf $HOME/.config/
 rm -f $HOME/.gitconfig
 ln -s $DIR/.gitconfig $HOME/.gitconfig
 
+# docker
+sudo systemctl enable docker.service
+sudo cp $DIR/etc/systemd/system/docker.service /etc/systemd/system/docker.service
+
 # .Xresources (DPI + rofi)
 rm -f $HOME/.Xresources
 ln -s $DIR/.Xresources $HOME/.Xresources

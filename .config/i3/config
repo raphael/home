@@ -2,12 +2,12 @@
 # Windows key on most keyboards
 set $mod Mod1
 
-font pango:Myriad Pro Regular Condensed 11
+font pango:Myriad Pro Regular 12
 
 # gaps
-smart_gaps on
-gaps inner 10
-gaps outer 0
+#smart_gaps on
+#gaps inner 0
+#gaps outer 0
 
 # Meta key bindings
 # Move window with mod+mouse drag
@@ -63,9 +63,9 @@ bindsym $mod+comma layout stacking
 bindsym $mod+period layout tabbed
 bindsym $mod+slash layout toggle split
 # split in horizontal orientation
-bindsym $mod+shift+w split h
+bindsym $mod+shift+v split h
 # split in vertical orientation
-bindsym $mod+Shift+ctrl+w split v
+bindsym $mod+v split v
 # Toggle floating with mod+shift+space
 bindsym $mod+Shift+space floating toggle
 # Swap focus between tiling windows and floating windows
@@ -74,8 +74,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+t move scratchpad
 bindsym $mod+t scratchpad show
 # Cycle through border styles with mod+b
-# bindsym $mod+b border toggle
-bindsym $mod+b  exec --no-startup-id ${HOME}/scripts/toggle_solarized_theme.sh
+bindsym $mod+b border toggle
 # restart i3 inplace with mod+shift+r
 bindsym $mod+Shift+r restart
 # Focus parent container
@@ -84,6 +83,8 @@ bindsym $mod+p focus parent
 ## Apps
 bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+Return exec gnome-terminal --window-with-profile=HiDPI
+bindsym $mod+backslash split v; exec gnome-terminal; split h
+bindsym $mod+Shift+backslash split v; exec gnome-terminal --window-with-profile=HiDPI; split h
 bindsym $mod+Ctrl+s exec gnome-screenshot
 bindsym $mod+e exec emacs
 bindsym $mod+c exec google-chrome-stable
@@ -126,16 +127,16 @@ exec --no-startup-id xrandr --output DP2 --auto --left-of eDP1
 # exec --no-startup-id compton
 
 # Enable touchpad tap
-exec --no-startup-id xinput set-prop 9 273 1
+exec --no-startup-id xinput set-prop 9 276 1
 
 # Accel
-exec --no-startup-id xinput set-prop 9 281 0.6
+exec --no-startup-id xinput set-prop 9 284 0.6
 
 # Enable natural scrolling
-exec --no-startup-id xinput set-prop 9 283 1
+exec --no-startup-id xinput set-prop 9 286 1
 
 # Enable middle emulation
-exec --no-startup-id xinput set-prop 9 293 1
+exec --no-startup-id xinput set-prop 9 296 1
 
 # Make sure laptop screen is primary output (for hidpi)
 exec --no-startup-id xrandr --output eDP1 --primary
@@ -162,51 +163,51 @@ exec --no-startup-id syne
 #new_window pixel 0
 
 # Lock
-bindsym Mod4+l exec "i3lock -B 5"
+bindsym Mod4+l exec "i3lock"
 
 # Gaps
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+#set $mode_gaps Gaps: (o) outer, (i) inner
+#set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#bindsym $mod+Shift+g mode "$mode_gaps"
 
-mode --pango_markup "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+#mode --pango_markup "$mode_gaps" {
+#        bindsym o      mode "$mode_gaps_outer"
+#        bindsym i      mode "$mode_gaps_inner"
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#}
 
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+#mode "$mode_gaps_inner" {
+#        bindsym plus  gaps inner current plus 5
+#        bindsym minus gaps inner current minus 5
+#        bindsym 0     gaps inner current set 0
+#
+#        bindsym Shift+plus  gaps inner all plus 5
+#        bindsym Shift+minus gaps inner all minus 5
+#        bindsym Shift+0     gaps inner all set 0
+#
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#}
+#mode "$mode_gaps_outer" {
+#        bindsym plus  gaps outer current plus 5
+#        bindsym minus gaps outer current minus 5
+#        bindsym 0     gaps outer current set 0
+#
+#        bindsym Shift+plus  gaps outer all plus 5
+#        bindsym Shift+minus gaps outer all minus 5
+#        bindsym Shift+0     gaps outer all set 0
+#
+#        bindsym Return mode "default"
+#        bindsym Escape mode "default"
+#}
 
 # bar
 # workspace_auto_back_and_forth yes
-hide_edge_borders both
+#hide_edge_borders both
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 
@@ -215,64 +216,66 @@ for_window [class="Blueman-manager"] floating enable
 exec --no-startup-id /usr/bin/blueman-applet                 # Bluetooth Manager
 
 # Colors
-set        $fg #d6d9d6
-#set        $fg #d6d1cc
-set        $bg #1d1f21
-set     $black #282a2e
-set       $red #cb555a
-set     $green #85cb55
-set    $yellow #e6cc63
-set      $blue #53a5ad
-set   $magenta #a84466
-set      $cyan #7bc3bd
-set     $white #e6e1dc
+set        $fg #ebdbb2
+set      $bold #fbf1c7
+set        $bg #282828
+set     $black #1d2021
+set       $red #cc241d
+set     $green #98971a
+set    $yellow #d79921
+set      $blue #458588
+set   $magenta #b16286
+set      $cyan #689d6a
+set     $white #a89984
+set     $muted #7c6f64
 
-#set   $primary #CB555A
-set   $primary  #CBCFCA
-set   $tertiary #ABAFAA
-set $secondary  #a84466
-set    $bar_bg  #32302fB0
+set   $primary   $fg
+set   $secondary $green
+set   $tertiary  $cyan
+set   $bar_bg    $cyan
 
-                      # Border      Background      Text        Indicator   Child
-client.focused          $blue       $primary        $bg         $red        $primary
-client.focused_inactive $black      $bg             $fg         $bg         $black
-client.unfocused        $black      $black          $fg         $black      $black
-client.urgent           $black      $white          $fg         $white      $red
+#                       Border      Background      Text        Indicator   Child
+client.focused          $green      $green          $bold       $green        $fg
+client.focused_inactive $bg         $black          $white      $green        $bg
+client.unfocused        $bg         $black          $white      $green        $bg
+client.urgent           $bg         $black          $white      $white      $red
 
 bar {
     strip_workspace_numbers yes
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-    i3bar_command i3bar -t
+    i3bar_command i3bar
     colors {
         background $bar_bg
         statusline $white
-                              # Border      Background      Text
-        focused_workspace       $bar_bg         $bar_bg     $green
-        active_workspace        $bar_bg         $bar_bg     $secondary
-        inactive_workspace      $bar_bg         $bar_bg     $tertiary
+                              # Border  Background  Text
+        focused_workspace     $bar_bg   $bar_bg     $green
+        active_workspace      $bar_bg   $bar_bg     $yellow
+        inactive_workspace    $bar_bg   $bar_bg     $muted
     }
     tray_output none
     position top
     output DP2
     #mode hide
+    #font pango:Myriad Pro Regular Condensed 6.5
     font pango:Myriad Pro Regular Condensed 12
 }
 
 bar {
     strip_workspace_numbers yes
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-    i3bar_command i3bar -t
+    i3bar_command i3bar 
     colors {
         background $bar_bg
         statusline $white
                               # Border      Background      Text
-        focused_workspace       $bar_bg         $bar_bg     $green
-        active_workspace        $bar_bg         $bar_bg     $secondary
-        inactive_workspace      $bar_bg         $bar_bg     $tertiary
+        focused_workspace     $bar_bg   $bar_bg     $green
+        active_workspace      $bar_bg   $bar_bg     $yellow
+        inactive_workspace    $bar_bg   $bar_bg     $muted
     }
     tray_output primary
     position top
     output eDP1
     #mode hide
-    font pango:Myriad Pro Regular Condensed 10
+    #font pango:Myriad Pro Regular Condensed 10
+    font pango:Myriad Pro Regular Condensed 20
 }

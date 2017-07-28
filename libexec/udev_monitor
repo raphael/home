@@ -1,0 +1,20 @@
+#!/bin/bash
+
+export DISPLAY=:0
+export XAUTHORITY=/run/user/1000/gdm/Xauthority
+
+function connect(){
+	xrandr --output DP2 --auto --left-of eDP1
+	/home/raphael/scripts/syne
+    /home/raphael/.fehbg
+}
+  
+function disconnect(){
+	xrandr --output DP2 --off
+	/home/raphael/scripts/syne
+}
+
+# sleep a little so xrandr produces the correct output
+sleep 1
+
+xrandr | grep "DP2 connected" &> /dev/null && connect || disconnect

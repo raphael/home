@@ -38,18 +38,18 @@ $percent = $2;
 
 if ($status eq 'Discharging') {
     if ($percent < 10) {
-        $full_text = '  ';
+        $full_text = ' ';
     } elsif ($percent < 25) {
-        $full_text = '  ';
+        $full_text = ' ';
     } elsif ($percent < 50) {
-        $full_text = '  ';
+        $full_text = ' ';
     } elsif ($percent < 75) {
-        $full_text = '  ';
+        $full_text = ' ';
     } elsif ($percent < 100) {
-        $full_text = '  ';
+        $full_text = ' ';
     }
 } elsif ($status eq 'Charging') {
-	$full_text = '  ';
+	$full_text = ' ';
 }
 
 $full_text .= "$percent%";
@@ -67,13 +67,13 @@ print "$short_text\n";
 if ($status eq 'Discharging') {
 
 	if ($percent < 20) {
-		print "#FF0000\n";
+		print "#fb4934\n";
 	} elsif ($percent < 40) {
-		print "#FFAE00\n";
+		print "#d65d0e\n";
 	} elsif ($percent < 60) {
-		print "#FFF600\n";
+		print "#d79921\n";
 	} elsif ($percent < 85) {
-		print "#A8FF00\n";
+		print "#98971a\n";
 	}
 
 	if ($percent < 5) {

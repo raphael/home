@@ -1,2 +1,2 @@
-KERNEL=="card0", SUBSYSTEM=="drm", RUN+="/usr/bin/systemctl start hotplug.service"
+KERNEL=="card0", SUBSYSTEM=="drm", RUN+="/usr/bin/systemctl restart hotplug.service"
 
