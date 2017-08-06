@@ -5,4 +5,5 @@
     insteadOf = gh:
 [github]
         user = raphael
+        oauth-token = 449973b6d454236725ccb018a3a23155fb613d5a
 

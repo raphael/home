@@ -28,6 +28,12 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+# move with mod+shift+hjkl
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
 # switch to workspace with mod+12345678
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -81,10 +87,10 @@ bindsym $mod+Shift+r restart
 bindsym $mod+p focus parent
 
 ## Apps
-bindsym $mod+Return exec gnome-terminal
-bindsym $mod+Shift+Return exec gnome-terminal --window-with-profile=HiDPI
-bindsym $mod+backslash split v; exec gnome-terminal; split h
-bindsym $mod+Shift+backslash split v; exec gnome-terminal --window-with-profile=HiDPI; split h
+#bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec terminator
+#bindsym $mod+Shift+Return exec gnome-terminal --window-with-profile=HiDPI
+bindsym $mod+Shift+Return exec terminator -l HiDPI
 bindsym $mod+Ctrl+s exec gnome-screenshot
 bindsym $mod+e exec emacs
 bindsym $mod+c exec google-chrome-stable
@@ -222,6 +228,7 @@ set        $bg #282828
 set     $black #1d2021
 set       $red #cc241d
 set     $green #98971a
+set     $bright_green #b8bb26
 set    $yellow #d79921
 set      $blue #458588
 set   $magenta #b16286
@@ -235,47 +242,47 @@ set   $tertiary  $cyan
 set   $bar_bg    $cyan
 
 #                       Border      Background      Text        Indicator   Child
-client.focused          $green      $green          $bold       $green        $fg
-client.focused_inactive $bg         $black          $white      $green        $bg
-client.unfocused        $bg         $black          $white      $green        $bg
+client.focused          $green      $green          $bold       $green      $green
+client.focused_inactive $bg         $black          $white      $green      $muted
+client.unfocused        $bg         $black          $white      $green      $bg
 client.urgent           $bg         $black          $white      $white      $red
 
-bar {
-    strip_workspace_numbers yes
-    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-    i3bar_command i3bar
-    colors {
-        background $bar_bg
-        statusline $white
-                              # Border  Background  Text
-        focused_workspace     $bar_bg   $bar_bg     $green
-        active_workspace      $bar_bg   $bar_bg     $yellow
-        inactive_workspace    $bar_bg   $bar_bg     $muted
-    }
-    tray_output none
-    position top
-    output DP2
-    #mode hide
-    #font pango:Myriad Pro Regular Condensed 6.5
-    font pango:Myriad Pro Regular Condensed 12
-}
+#bar {
+    #strip_workspace_numbers yes
+    #status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    #i3bar_command i3bar
+    #colors {
+        #background $bar_bg
+        #statusline $white
+                              ## Border  Background  Text
+        #focused_workspace     $bar_bg   $bar_bg     $bright_green
+        #active_workspace      $bar_bg   $bar_bg     $yellow
+        #inactive_workspace    $bar_bg   $bar_bg     $muted
+    #}
+    #tray_output none
+    #position top
+    #output DP2
+    ##mode hide
+    ##font pango:Myriad Pro Regular Condensed 6.5
+    #font pango:Myriad Pro Regular Condensed 12
+#}
 
-bar {
-    strip_workspace_numbers yes
-    status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-    i3bar_command i3bar 
-    colors {
-        background $bar_bg
-        statusline $white
-                              # Border      Background      Text
-        focused_workspace     $bar_bg   $bar_bg     $green
-        active_workspace      $bar_bg   $bar_bg     $yellow
-        inactive_workspace    $bar_bg   $bar_bg     $muted
-    }
-    tray_output primary
-    position top
-    output eDP1
-    #mode hide
-    #font pango:Myriad Pro Regular Condensed 10
-    font pango:Myriad Pro Regular Condensed 20
-}
+#bar {
+    #strip_workspace_numbers yes
+    #status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+    #i3bar_command i3bar 
+    #colors {
+        #background $bar_bg
+        #statusline $white
+                              ## Border      Background      Text
+        #focused_workspace     $bar_bg   $bar_bg     $bright_green
+        #active_workspace      $bar_bg   $bar_bg     $yellow
+        #inactive_workspace    $bar_bg   $bar_bg     $muted
+    #}
+    #tray_output primary
+    #position top
+    #output eDP1
+    ##mode hide
+    ##font pango:Myriad Pro Regular Condensed 10
+    #font pango:Myriad Pro Regular Condensed 20
+#}

@@ -19,15 +19,13 @@ if test -n "$EMACS"
   set -x TERM eterm-color
 end
 
-# icons
-source ~/.local/share/icons-in-terminal/icons.fish
-
 # bobthefish setup
 set -g theme_color_scheme gruvbox
 
 alias vi=nvim
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
+alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'
 
 set -gx GOPATH /home/raphael/go
 set -gx PATH $PATH $GOPATH/bin $HOME/scripts
